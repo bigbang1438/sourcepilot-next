@@ -1,0 +1,41 @@
+[project]
+name = "sourcepilot-server"
+version = "0.1.0"
+description = "本机多模态资料研读 Agent"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.143.1",
+    "httpx>=0.28.1",
+    "langgraph>=1.2.15",
+    "langgraph-checkpoint-sqlite>=3.1.2",
+    "numpy>=2.5.4",
+    "pillow>=12.3.0",
+    "pymupdf>=1.28.2",
+    "python-multipart>=0.0.32",
+    "rank-bm25>=0.2.2",
+    "uvicorn>=0.54.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+ignore = ["E501"] # SQL schemas and Chinese model instructions remain readable as complete strings.
+
+[tool.ty.environment]
+python-version = "3.12"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "pytest-cov>=7.1.0",
+    "ruff>=0.17.0",
+    "ty>=0.0.88",
+]
