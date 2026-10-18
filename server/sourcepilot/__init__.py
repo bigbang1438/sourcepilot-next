@@ -1,0 +1,1 @@
+"""SourcePilot local research workspace."""
